@@ -70,6 +70,8 @@
             <li><a href="../lists/procedures.html">Procedures</a></li>
         
                
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
         
             <li><a href="../program/minifavor.html">Program</a></li>
       
@@ -88,6 +90,8 @@
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
 
                              
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
 
 <li class="visible-xs hidden-sm visible-lg"><a href="../program/minifavor.html">Program</a></li>
 
@@ -128,7 +132,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="23.1% of total for procedures.">37 statements</a>
+    title="22.6% of total for procedures.">37 statements</a>
      </li> 
      
      
@@ -349,36 +353,35 @@ public function cf(cu, ni)
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">function </span><span class="n">RTndt</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">CF</span><span class="p">,</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span><span class="p">)</span>
-            
+    <div class="highlight"><pre><span></span>    <span class="k">function </span><span class="n">RTndt</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">CF</span><span class="p">,</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span>
+
         <span class="c">!Variables</span>
-        <span class="kt">real</span> <span class="kd">::</span> <span class="n">RTndt</span><span class="p">,</span> <span class="n">D_RTepi</span><span class="p">,</span> <span class="n">D_RTndt</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">f</span>
-        <span class="kt">real</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">a</span><span class="p">,</span> <span class="n">CF</span><span class="p">,</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span>
-            
+        <span class="kt">real</span> <span class="kd">::</span> <span class="n">RTndt</span><span class="p">,</span> <span class="n">D_RTepi</span><span class="p">,</span> <span class="n">D_RTndt</span><span class="p">,</span> <span class="n">f</span>
+        <span class="kt">real</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">a</span><span class="p">,</span> <span class="n">CF</span><span class="p">,</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span><span class="p">,</span> <span class="n">phi</span>
+
         <span class="c">!Calculate D_RTepi</span>
-        <span class="k">call </span><span class="nb">RANDOM_NUMBER</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
         <span class="n">D_RTepi</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="mf">9.5</span><span class="o">+</span><span class="mi">7</span><span class="mf">8.0</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="nb">log</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">phi</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mf">1.73</span><span class="p">)</span>
-            
+
         <span class="c">!Calculate D_RTndt</span>
         <span class="n">f</span> <span class="o">=</span> <span class="n">fsurf</span><span class="o">*</span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.24</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
         <span class="n">D_RTndt</span> <span class="o">=</span> <span class="n">CF</span><span class="o">*</span><span class="n">f</span><span class="o">**</span><span class="p">(</span><span class="mf">0.28</span><span class="o">-</span><span class="mf">0.10</span><span class="o">*</span><span class="n">log10</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
-            
+
         <span class="c">!Calculate the RTndt</span>
         <span class="n">RTndt</span> <span class="o">=</span> <span class="n">RTndt0</span> <span class="o">+</span> <span class="n">D_RTepi</span> <span class="o">+</span> <span class="n">D_RTndt</span>
-            
+
     <span class="k">end function </span><span class="n">RTndt</span>
-        
+
     <span class="c">!This function calculates the weld chemistry factor given the copper and nickel contents</span>
     <span class="k">function </span><span class="n">CF</span><span class="p">(</span><span class="n">Cu</span><span class="p">,</span> <span class="n">Ni</span><span class="p">)</span>
-            
+
         <span class="k">use </span><span class="n">constants_h</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="n">CF_weld</span>
-            
+
         <span class="c">!Variables</span>
         <span class="kt">real</span> <span class="kd">::</span> <span class="n">CF</span>
         <span class="kt">real</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">Cu</span><span class="p">,</span> <span class="n">Ni</span>
         <span class="kt">integer</span> <span class="kd">::</span> <span class="n">Cu_int</span><span class="p">,</span> <span class="n">Ni_int</span>
         <span class="kt">real</span> <span class="kd">::</span> <span class="n">CF_1</span><span class="p">,</span> <span class="n">CF_2</span>
-            
+
         <span class="c">!Calculate indexes for copper interpolation:</span>
         <span class="c">!  multiply the Cu-% by 100 and take the integer truncation to find interpolation bounds</span>
         <span class="c">!  truncate interpolation between 0% and 0.40%</span>
@@ -388,7 +391,7 @@ public function cf(cu, ni)
         <span class="k">else if</span> <span class="p">(</span><span class="n">Cu_int</span> <span class="o">&gt;</span> <span class="mi">40</span><span class="p">)</span> <span class="k">then</span>
 <span class="k">            </span><span class="n">Cu_int</span> <span class="o">=</span> <span class="mi">40</span>
         <span class="k">end if</span>
-            
+
         <span class="c">!Calculate indexes for nickel interpolation:</span>
         <span class="c">!  multiply the Ni-% by 100 and take the integer truncation to find interpolation bounds</span>
         <span class="c">!  truncate interpolation between 0% and 1.20%</span>
@@ -400,7 +403,7 @@ public function cf(cu, ni)
         <span class="k">end if</span>
         <span class="c">!Nickel contents in CF_weld are at intervals of 0.20% nickel</span>
         <span class="n">Ni_int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Ni_int</span><span class="o">/</span><span class="mi">20</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
-            
+
         <span class="c">!Bi-linear interpolation</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">Cu</span> <span class="o">&lt;=</span> <span class="mf">0.0</span> <span class="p">.</span><span class="nb">or</span><span class="p">.</span> <span class="n">Cu</span> <span class="o">&gt;=</span> <span class="mf">0.40</span><span class="p">)</span> <span class="k">then</span> <span class="c">!only interpolate on nickel</span>
             <span class="k">select case</span> <span class="p">(</span><span class="n">Ni_int</span><span class="p">)</span>
@@ -425,7 +428,7 @@ public function cf(cu, ni)
             <span class="n">CF</span> <span class="o">=</span> <span class="n">CF_1</span> <span class="o">+</span> <span class="p">(</span><span class="n">Ni</span><span class="o">-</span><span class="mf">0.2</span><span class="o">*</span><span class="p">(</span><span class="n">Ni_int</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="mf">0.2</span> <span class="o">*</span> <span class="p">(</span><span class="n">CF_2</span><span class="o">-</span><span class="n">CF_1</span><span class="p">)</span>
             <span class="k">end select</span>
 <span class="k">        end if</span>
-<span class="k">            </span>
+
 <span class="k">    end function </span><span class="n">CF</span>
 </pre></div>
 
@@ -448,7 +451,7 @@ public function cf(cu, ni)
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-12-03 22:02  
+             on 2020-12-03 22:07  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> miniFAVOR was developed by </p></div>

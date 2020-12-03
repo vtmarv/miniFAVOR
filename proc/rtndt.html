@@ -70,6 +70,8 @@
             <li><a href="../lists/procedures.html">Procedures</a></li>
         
                
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
         
             <li><a href="../program/minifavor.html">Program</a></li>
       
@@ -88,6 +90,8 @@
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
 
                              
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
 
 <li class="visible-xs hidden-sm visible-lg"><a href="../program/minifavor.html">Program</a></li>
 
@@ -128,7 +132,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 5.6% of total for procedures.">9 statements</a>
+    title=" 4.9% of total for procedures.">8 statements</a>
      </li> 
      
      
@@ -201,7 +205,7 @@
     
     <div class="col-md-9" id='text'>
     <h2>
-public function rtndt(a, cf, fsurf, rtndt0)
+public function rtndt(a, cf, fsurf, rtndt0, phi)
     
     
    
@@ -284,6 +288,21 @@ public function rtndt(a, cf, fsurf, rtndt0)
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-phi%7E2"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>phi</strong></td><td></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -360,23 +379,22 @@ public function rtndt(a, cf, fsurf, rtndt0)
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">function </span><span class="n">RTndt</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">CF</span><span class="p">,</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span><span class="p">)</span>
-            
+    <div class="highlight"><pre><span></span>    <span class="k">function </span><span class="n">RTndt</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">CF</span><span class="p">,</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span>
+
         <span class="c">!Variables</span>
-        <span class="kt">real</span> <span class="kd">::</span> <span class="n">RTndt</span><span class="p">,</span> <span class="n">D_RTepi</span><span class="p">,</span> <span class="n">D_RTndt</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">f</span>
-        <span class="kt">real</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">a</span><span class="p">,</span> <span class="n">CF</span><span class="p">,</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span>
-            
+        <span class="kt">real</span> <span class="kd">::</span> <span class="n">RTndt</span><span class="p">,</span> <span class="n">D_RTepi</span><span class="p">,</span> <span class="n">D_RTndt</span><span class="p">,</span> <span class="n">f</span>
+        <span class="kt">real</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">a</span><span class="p">,</span> <span class="n">CF</span><span class="p">,</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span><span class="p">,</span> <span class="n">phi</span>
+
         <span class="c">!Calculate D_RTepi</span>
-        <span class="k">call </span><span class="nb">RANDOM_NUMBER</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
         <span class="n">D_RTepi</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="mf">9.5</span><span class="o">+</span><span class="mi">7</span><span class="mf">8.0</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="nb">log</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">phi</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mf">1.73</span><span class="p">)</span>
-            
+
         <span class="c">!Calculate D_RTndt</span>
         <span class="n">f</span> <span class="o">=</span> <span class="n">fsurf</span><span class="o">*</span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.24</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
         <span class="n">D_RTndt</span> <span class="o">=</span> <span class="n">CF</span><span class="o">*</span><span class="n">f</span><span class="o">**</span><span class="p">(</span><span class="mf">0.28</span><span class="o">-</span><span class="mf">0.10</span><span class="o">*</span><span class="n">log10</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
-            
+
         <span class="c">!Calculate the RTndt</span>
         <span class="n">RTndt</span> <span class="o">=</span> <span class="n">RTndt0</span> <span class="o">+</span> <span class="n">D_RTepi</span> <span class="o">+</span> <span class="n">D_RTndt</span>
-            
+
     <span class="k">end function </span><span class="n">RTndt</span>
 </pre></div>
 
@@ -399,7 +417,7 @@ public function rtndt(a, cf, fsurf, rtndt0)
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-12-03 22:02  
+             on 2020-12-03 22:07  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> miniFAVOR was developed by </p></div>
