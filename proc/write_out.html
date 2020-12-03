@@ -128,7 +128,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="29.0% of total for procedures.">45 statements</a>
+    title="29.4% of total for procedures.">47 statements</a>
      </li> 
      
      
@@ -201,34 +201,13 @@
     
     <div class="col-md-9" id='text'>
     <h2>
-public subroutine write_out(fn_in, n_out, n_dat)
+public subroutine write_out(fn_in, n_out, n_dat, a, b, nsim, ntime, details, cu_ave, ni_ave, cu_sig, ni_sig, fsurf, rtndt0, cpi_results, k_hist, chemistry)
     
     
    
 </h2>
     
   
-    <div class="panel panel-default">
-      <div class="panel-heading">
-  <h3 class="panel-title">Uses</h3>
-      </div>
-      <ul class="list-group">
-      
-      <li class="list-group-item">
-  <ul class="list-inline">
-    
-    <li><a href='../module/inputs_h.html'>inputs_h</a></li>
-    
-    <li><a href='../module/outputs_h.html'>outputs_h</a></li>
-    
-  </ul>
-      </li>
-      
-      
-      
-      </ul>
-    </div>
-    
 
 
     
@@ -287,6 +266,216 @@ public subroutine write_out(fn_in, n_out, n_dat)
   
   <td></td><td>::</td>
   <td><strong>n_dat</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-a%7E2"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>a</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-b%7E2"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>b</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nsim%7E2"></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>nsim</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ntime%7E2"></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>ntime</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-details%7E2"></span>logical,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>details</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-cu_ave%7E2"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>cu_ave</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ni_ave%7E2"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>ni_ave</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-cu_sig%7E2"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>cu_sig</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ni_sig%7E2"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>ni_sig</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-fsurf%7E2"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>fsurf</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-rtndt0%7E2"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>rtndt0</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-cpi_results"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>cpi_results</strong>(:,:)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-k_hist"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>k_hist</strong>(:)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-chemistry"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>chemistry</strong>(:,:)</td><td></td>
   
 </tr>
 
@@ -357,22 +546,25 @@ public subroutine write_out(fn_in, n_out, n_dat)
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">write_OUT</span><span class="p">(</span><span class="n">fn_IN</span><span class="p">,</span> <span class="n">n_OUT</span><span class="p">,</span> <span class="n">n_DAT</span><span class="p">)</span>
-    
-        <span class="k">use </span><span class="n">inputs_h</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">nsim</span><span class="p">,</span> <span class="n">ntime</span><span class="p">,</span> <span class="n">details</span><span class="p">,</span> <span class="p">&amp;</span>
-            <span class="n">Cu_ave</span><span class="p">,</span> <span class="n">Ni_ave</span><span class="p">,</span> <span class="n">Cu_sig</span><span class="p">,</span> <span class="n">Ni_sig</span><span class="p">,</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span>
-        <span class="k">use </span><span class="n">outputs_h</span>
-        
+    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">write_OUT</span><span class="p">(</span><span class="n">fn_IN</span><span class="p">,</span> <span class="n">n_OUT</span><span class="p">,</span> <span class="n">n_DAT</span><span class="p">,</span> <span class="p">&amp;</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">nsim</span><span class="p">,</span> <span class="n">ntime</span><span class="p">,</span> <span class="n">details</span><span class="p">,</span> <span class="n">Cu_ave</span><span class="p">,</span> <span class="n">Ni_ave</span><span class="p">,</span> <span class="n">Cu_sig</span><span class="p">,</span> <span class="n">Ni_sig</span><span class="p">,</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span><span class="p">,</span> <span class="p">&amp;</span>
+        <span class="n">CPI_results</span><span class="p">,</span> <span class="n">K_hist</span><span class="p">,</span> <span class="n">Chemistry</span><span class="p">)</span>
+
         <span class="c">!Variables</span>
         <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">64</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fn_IN</span>
         <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">n_OUT</span><span class="p">,</span> <span class="n">n_DAT</span>
+        <span class="kt">real</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">Cu_ave</span><span class="p">,</span> <span class="n">Ni_ave</span><span class="p">,</span> <span class="n">Cu_sig</span><span class="p">,</span> <span class="n">Ni_sig</span><span class="p">,</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span>
+        <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">nsim</span><span class="p">,</span> <span class="n">ntime</span>
+        <span class="kt">logical</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">details</span>
+        <span class="kt">real</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">CPI_results</span><span class="p">(:,:),</span> <span class="n">K_hist</span><span class="p">(:),</span> <span class="n">Chemistry</span><span class="p">(:,:)</span>
+
         <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fn_OUT</span><span class="p">,</span> <span class="n">fn_DAT</span>
         <span class="kt">integer</span> <span class="kd">::</span> <span class="n">i</span>
 
         <span class="c">!Open output file</span>
         <span class="n">fn_OUT</span> <span class="o">=</span> <span class="n">fn_IN</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="nb">index</span><span class="p">(</span><span class="n">fn_IN</span><span class="p">,</span> <span class="s1">&#39;.in&#39;</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;.out&#39;</span>
         <span class="k">open</span> <span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">n_OUT</span><span class="p">,</span> <span class="k">file</span><span class="o">=</span><span class="n">fn_OUT</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;unknown&#39;</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="s1">&#39;formatted&#39;</span><span class="p">)</span>
-        
+
         <span class="c">!Write out important outputs summary</span>
         <span class="k">write</span> <span class="p">(</span><span class="n">n_OUT</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="s1">&#39;MiniFAVOR Output Summary&#39;</span>
         <span class="k">write</span> <span class="p">(</span><span class="n">n_OUT</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="s1">&#39;/Key inputs/&#39;</span>
@@ -393,7 +585,7 @@ public subroutine write_out(fn_in, n_out, n_dat)
             <span class="nb">maxval</span><span class="p">(</span><span class="n">CPI_results</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)),</span> <span class="s1">&#39; degF&#39;</span>
         <span class="k">write</span> <span class="p">(</span><span class="n">n_OUT</span><span class="p">,</span> <span class="s1">&#39;(a25,f10.3,a)&#39;</span><span class="p">)</span> <span class="s1">&#39;Average crack tip RTndt: &#39;</span><span class="p">,</span> <span class="p">&amp;</span>
             <span class="nb">sum</span><span class="p">(</span><span class="n">CPI_results</span><span class="p">(:,</span><span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="n">nsim</span><span class="p">,</span> <span class="s1">&#39; degF&#39;</span>
-        
+
         <span class="c">!Write out detailed output to data file</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">details</span><span class="p">)</span> <span class="k">then</span>
 <span class="k">            </span><span class="n">fn_DAT</span> <span class="o">=</span> <span class="n">fn_IN</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="nb">index</span><span class="p">(</span><span class="n">fn_IN</span><span class="p">,</span> <span class="s1">&#39;.in&#39;</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;.dat&#39;</span>
@@ -414,8 +606,8 @@ public subroutine write_out(fn_in, n_out, n_dat)
                 <span class="k">write</span> <span class="p">(</span><span class="n">n_DAT</span><span class="p">,</span> <span class="s1">&#39;(3f10.3)&#39;</span><span class="p">)</span> <span class="n">CPI_results</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">CPI_results</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">CPI_results</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
             <span class="k">end do </span><span class="n">write_CPI</span>
         <span class="k">end if</span>
-<span class="k">               </span>
-<span class="k">        </span>
+
+
 <span class="k">    end subroutine </span><span class="n">write_OUT</span>
 </pre></div>
 
@@ -438,7 +630,7 @@ public subroutine write_out(fn_in, n_out, n_dat)
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-12-03 21:49  
+             on 2020-12-03 22:02  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> miniFAVOR was developed by </p></div>

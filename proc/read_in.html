@@ -128,7 +128,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="20.6% of total for procedures.">32 statements</a>
+    title="21.9% of total for procedures.">35 statements</a>
      </li> 
      
      
@@ -201,32 +201,13 @@
     
     <div class="col-md-9" id='text'>
     <h2>
-public subroutine read_in(fn_in, n_in, n_echo)
+public subroutine read_in(fn_in, n_in, n_echo, a, b, nsim, ntime, details, cu_ave, ni_ave, cu_sig, ni_sig, fsurf, rtndt0, stress, temp)
     
     
    
 </h2>
     
   
-    <div class="panel panel-default">
-      <div class="panel-heading">
-  <h3 class="panel-title">Uses</h3>
-      </div>
-      <ul class="list-group">
-      
-      <li class="list-group-item">
-  <ul class="list-inline">
-    
-    <li><a href='../module/inputs_h.html'>inputs_h</a></li>
-    
-  </ul>
-      </li>
-      
-      
-      
-      </ul>
-    </div>
-    
 
 
     
@@ -285,6 +266,201 @@ public subroutine read_in(fn_in, n_in, n_echo)
   
   <td></td><td>::</td>
   <td><strong>n_echo</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-a"></span>real,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>a</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-b"></span>real,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>b</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nsim"></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>nsim</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ntime"></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>ntime</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-details"></span>logical,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>details</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-cu_ave"></span>real,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>cu_ave</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ni_ave"></span>real,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>ni_ave</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-cu_sig"></span>real,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>cu_sig</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ni_sig"></span>real,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>ni_sig</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-fsurf"></span>real,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>fsurf</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-rtndt0"></span>real,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>rtndt0</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-stress"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>stress</strong>(:)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-temp"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>temp</strong>(:)</td><td></td>
   
 </tr>
 
@@ -355,35 +531,39 @@ public subroutine read_in(fn_in, n_in, n_echo)
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">read_IN</span><span class="p">(</span><span class="n">fn_IN</span><span class="p">,</span> <span class="n">n_IN</span><span class="p">,</span> <span class="n">n_ECHO</span><span class="p">)</span>
-            
-        <span class="k">use </span><span class="n">inputs_h</span>
-            
+    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">read_IN</span><span class="p">(</span><span class="n">fn_IN</span><span class="p">,</span> <span class="n">n_IN</span><span class="p">,</span> <span class="n">n_ECHO</span><span class="p">,</span> <span class="p">&amp;</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">nsim</span><span class="p">,</span> <span class="n">ntime</span><span class="p">,</span> <span class="n">details</span><span class="p">,</span> <span class="n">Cu_ave</span><span class="p">,</span> <span class="n">Ni_ave</span><span class="p">,</span> <span class="n">Cu_sig</span><span class="p">,</span> <span class="n">Ni_sig</span><span class="p">,</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span><span class="p">,</span> <span class="n">stress</span><span class="p">,</span> <span class="n">temp</span><span class="p">)</span>
+
         <span class="c">!Variables</span>
         <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">n_IN</span><span class="p">,</span> <span class="n">n_ECHO</span>
         <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">64</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fn_IN</span>
+        <span class="kt">real</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">Cu_ave</span><span class="p">,</span> <span class="n">Ni_ave</span><span class="p">,</span> <span class="n">Cu_sig</span><span class="p">,</span> <span class="n">Ni_sig</span><span class="p">,</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span>
+        <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">nsim</span><span class="p">,</span> <span class="n">ntime</span>
+        <span class="kt">logical</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">details</span>
+        <span class="kt">real</span><span class="p">,</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">stress</span><span class="p">(:),</span> <span class="n">temp</span><span class="p">(:)</span>
+
         <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fn_ECHO</span>
         <span class="kt">integer</span> <span class="kd">::</span> <span class="n">i</span>
-            
+
         <span class="c">!Open input file and create echo file</span>
         <span class="k">open</span> <span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">n_IN</span><span class="p">,</span> <span class="k">file</span><span class="o">=</span><span class="n">fn_IN</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;old&#39;</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="s1">&#39;formatted&#39;</span><span class="p">)</span>
         <span class="n">fn_ECHO</span> <span class="o">=</span> <span class="n">fn_IN</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="nb">index</span><span class="p">(</span><span class="n">fn_IN</span><span class="p">,</span> <span class="s1">&#39;.in&#39;</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;.echo&#39;</span>
         <span class="k">open</span> <span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">n_ECHO</span><span class="p">,</span> <span class="k">file</span><span class="o">=</span><span class="n">fn_ECHO</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;unknown&#39;</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="s1">&#39;formatted&#39;</span><span class="p">)</span>
-            
+
         <span class="c">!Read and echo crack depth and vessel thickness</span>
         <span class="k">read</span> <span class="p">(</span><span class="n">n_IN</span><span class="p">,</span> <span class="o">*</span><span class="p">)</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span>
         <span class="k">write</span> <span class="p">(</span><span class="n">n_ECHO</span><span class="p">,</span> <span class="s1">&#39;(a25,f10.3,a)&#39;</span><span class="p">)</span> <span class="s1">&#39;Crack Depth: &#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39; in&#39;</span>
         <span class="k">write</span> <span class="p">(</span><span class="n">n_ECHO</span><span class="p">,</span> <span class="s1">&#39;(a25,f10.3,a)&#39;</span><span class="p">)</span> <span class="s1">&#39;Vessel Thickness: &#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s1">&#39; in&#39;</span>
-            
+
         <span class="c">!Read and echo number of simulations to be performed andnumber of time steps</span>
         <span class="k">read</span> <span class="p">(</span><span class="n">n_IN</span><span class="p">,</span> <span class="o">*</span><span class="p">)</span> <span class="n">nsim</span><span class="p">,</span> <span class="n">ntime</span>
         <span class="k">write</span> <span class="p">(</span><span class="n">n_ECHO</span><span class="p">,</span> <span class="s1">&#39;(a25,i10)&#39;</span><span class="p">)</span> <span class="s1">&#39;Number of Simulations: &#39;</span><span class="p">,</span> <span class="n">nsim</span>
         <span class="k">write</span> <span class="p">(</span><span class="n">n_ECHO</span><span class="p">,</span> <span class="s1">&#39;(a25,i10)&#39;</span><span class="p">)</span> <span class="s1">&#39;Number of Time Steps: &#39;</span><span class="p">,</span> <span class="n">ntime</span>
-        
+
         <span class="c">!Read in and echo type of output to be written</span>
         <span class="k">read</span> <span class="p">(</span><span class="n">n_IN</span><span class="p">,</span> <span class="o">*</span><span class="p">)</span> <span class="n">details</span>
         <span class="k">write</span> <span class="p">(</span><span class="n">n_ECHO</span><span class="p">,</span> <span class="s1">&#39;(a25,l10)&#39;</span><span class="p">)</span> <span class="s1">&#39;Detailed output: &#39;</span><span class="p">,</span> <span class="n">details</span>
-            
+
         <span class="c">!Read and echo embrittlement inputs</span>
         <span class="k">read</span> <span class="p">(</span><span class="n">n_IN</span><span class="p">,</span> <span class="o">*</span><span class="p">)</span> <span class="n">Cu_ave</span><span class="p">,</span> <span class="n">Ni_ave</span><span class="p">,</span> <span class="n">Cu_sig</span><span class="p">,</span> <span class="n">Ni_sig</span><span class="p">,</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span>
         <span class="k">write</span> <span class="p">(</span><span class="n">n_ECHO</span><span class="p">,</span> <span class="s1">&#39;(a25,f10.3,a)&#39;</span><span class="p">)</span> <span class="s1">&#39;Copper Content: &#39;</span><span class="p">,</span> <span class="n">Cu_ave</span><span class="p">,</span> <span class="s1">&#39; %&#39;</span>
@@ -392,18 +572,18 @@ public subroutine read_in(fn_in, n_in, n_echo)
         <span class="k">write</span> <span class="p">(</span><span class="n">n_ECHO</span><span class="p">,</span> <span class="s1">&#39;(a25,f10.3,a)&#39;</span><span class="p">)</span> <span class="s1">&#39;Nickel Content STDEV: &#39;</span><span class="p">,</span> <span class="n">Ni_sig</span><span class="p">,</span> <span class="s1">&#39; %&#39;</span>
         <span class="k">write</span> <span class="p">(</span><span class="n">n_ECHO</span><span class="p">,</span> <span class="s1">&#39;(a25,f10.3,a)&#39;</span><span class="p">)</span> <span class="s1">&#39;ID Surface Fluence: &#39;</span><span class="p">,</span> <span class="n">fsurf</span><span class="p">,</span> <span class="s1">&#39; n/cm^2&#39;</span>
         <span class="k">write</span> <span class="p">(</span><span class="n">n_ECHO</span><span class="p">,</span> <span class="s1">&#39;(a25,f10.3,a)&#39;</span><span class="p">)</span> <span class="s1">&#39;Unirradiated RTndt: &#39;</span><span class="p">,</span> <span class="n">RTndt0</span><span class="p">,</span> <span class="s1">&#39; degF&#39;</span>
-            
+
         <span class="c">!Allocate stress and temperature arrays</span>
         <span class="k">allocate</span><span class="p">(</span><span class="n">stress</span><span class="p">(</span><span class="n">ntime</span><span class="p">))</span>
         <span class="k">allocate</span><span class="p">(</span><span class="n">temp</span><span class="p">(</span><span class="n">ntime</span><span class="p">))</span>
-            
+
         <span class="c">!Read and echo stress and temerature inputs</span>
         <span class="k">write</span> <span class="p">(</span><span class="n">n_ECHO</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="s1">&#39;Stress (ksi),      Temperature (degF)&#39;</span>
         <span class="n">read_transient</span><span class="p">:</span> <span class="k">do  </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ntime</span>
             <span class="k">read</span> <span class="p">(</span><span class="n">n_IN</span><span class="p">,</span> <span class="o">*</span><span class="p">)</span> <span class="n">stress</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">temp</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
             <span class="k">write</span> <span class="p">(</span><span class="n">n_ECHO</span><span class="p">,</span> <span class="s1">&#39;(f10.3,9x,f10.3)&#39;</span><span class="p">)</span> <span class="n">stress</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">temp</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
         <span class="k">end do </span><span class="n">read_transient</span>
-            
+
     <span class="k">end subroutine </span><span class="n">read_IN</span>
 </pre></div>
 
@@ -426,7 +606,7 @@ public subroutine read_in(fn_in, n_in, n_echo)
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-12-03 21:49  
+             on 2020-12-03 22:02  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> miniFAVOR was developed by </p></div>

@@ -128,7 +128,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="18.0% of total for source files.">42 statements</a>
+    title="21.3% of total for source files.">49 statements</a>
      </li> 
      
      
@@ -283,80 +283,94 @@
 <a name="ln-15"></a>    <span class="k">program </span><span class="n">miniFAVOR</span>
 <a name="ln-16"></a>
 <a name="ln-17"></a>    <span class="k">use </span><span class="n">I_O</span>
-<a name="ln-18"></a>    <span class="k">use </span><span class="n">inputs_h</span>
-<a name="ln-19"></a>    <span class="k">use </span><span class="n">outputs_h</span>
-<a name="ln-20"></a>    <span class="k">use </span><span class="n">calc_RTndt</span>
-<a name="ln-21"></a>    <span class="k">use </span><span class="n">calc_K</span>
-<a name="ln-22"></a>    <span class="k">use </span><span class="n">calc_cpi</span>
+<a name="ln-18"></a>    <span class="k">use </span><span class="n">calc_RTndt</span>
+<a name="ln-19"></a>    <span class="k">use </span><span class="n">calc_K</span>
+<a name="ln-20"></a>    <span class="k">use </span><span class="n">calc_cpi</span>
+<a name="ln-21"></a>
+<a name="ln-22"></a>    <span class="k">implicit none</span>
 <a name="ln-23"></a>
-<a name="ln-24"></a>    <span class="k">implicit none</span>
-<a name="ln-25"></a>
-<a name="ln-26"></a>    <span class="c">! Variables</span>
-<a name="ln-27"></a>    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fn_IN</span>
-<a name="ln-28"></a>    <span class="kt">integer</span><span class="p">,</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">n_IN</span> <span class="o">=</span> <span class="mi">15</span>
-<a name="ln-29"></a>    <span class="kt">integer</span><span class="p">,</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">n_ECHO</span> <span class="o">=</span> <span class="n">n_IN</span> <span class="o">+</span> <span class="mi">1</span>
-<a name="ln-30"></a>    <span class="kt">integer</span><span class="p">,</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">n_OUT</span> <span class="o">=</span> <span class="n">n_IN</span> <span class="o">+</span> <span class="mi">2</span>
-<a name="ln-31"></a>    <span class="kt">integer</span><span class="p">,</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">n_DAT</span> <span class="o">=</span> <span class="n">n_IN</span> <span class="o">+</span> <span class="mi">3</span>
-<a name="ln-32"></a>    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">num_seeds</span>
-<a name="ln-33"></a>
-<a name="ln-34"></a>    <span class="c">! Body of miniFAVOR</span>
-<a name="ln-35"></a>
-<a name="ln-36"></a>    <span class="c">!Get input file name</span>
-<a name="ln-37"></a>    <span class="k">call </span><span class="nb">random_seed</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">num_seeds</span><span class="p">)</span>
-<a name="ln-38"></a>    <span class="k">call </span><span class="nb">random_seed</span><span class="p">(</span><span class="n">put</span><span class="o">=</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_seeds</span><span class="p">)])</span>
-<a name="ln-39"></a>
-<a name="ln-40"></a>    <span class="k">print</span> <span class="o">*</span><span class="p">,</span> <span class="s1">&#39;Input file name:&#39;</span>
-<a name="ln-41"></a>    <span class="k">read</span> <span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="n">fn_IN</span>
-<a name="ln-42"></a>
-<a name="ln-43"></a>    <span class="c">!Read input file</span>
-<a name="ln-44"></a>    <span class="k">call </span><span class="n">read_IN</span><span class="p">(</span><span class="n">fn_IN</span><span class="p">,</span> <span class="n">n_IN</span><span class="p">,</span> <span class="n">n_ECHO</span><span class="p">)</span>
-<a name="ln-45"></a>
-<a name="ln-46"></a>    <span class="c">!Allocate output arrays</span>
-<a name="ln-47"></a>    <span class="k">allocate</span><span class="p">(</span><span class="n">K_hist</span><span class="p">(</span><span class="n">ntime</span><span class="p">))</span>
-<a name="ln-48"></a>    <span class="k">allocate</span><span class="p">(</span><span class="n">Chemistry</span><span class="p">(</span><span class="n">nsim</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<a name="ln-49"></a>    <span class="k">allocate</span><span class="p">(</span><span class="n">cpi_hist</span><span class="p">(</span><span class="n">nsim</span><span class="p">,</span> <span class="n">ntime</span><span class="p">))</span>
-<a name="ln-50"></a>    <span class="k">allocate</span><span class="p">(</span><span class="n">CPI_results</span><span class="p">(</span><span class="n">nsim</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<a name="ln-51"></a>
-<a name="ln-52"></a>    <span class="c">!Initialize output arrays</span>
-<a name="ln-53"></a>    <span class="n">K_hist</span> <span class="o">=</span>  <span class="mf">0.0</span>
-<a name="ln-54"></a>    <span class="n">Chemistry</span> <span class="o">=</span> <span class="mf">0.0</span>
-<a name="ln-55"></a>    <span class="n">cpi_hist</span> <span class="o">=</span> <span class="mf">0.0</span>
-<a name="ln-56"></a>    <span class="n">CPI_results</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a name="ln-24"></a>    <span class="c">! Variables</span>
+<a name="ln-25"></a>    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fn_IN</span>
+<a name="ln-26"></a>    <span class="kt">integer</span><span class="p">,</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">n_IN</span> <span class="o">=</span> <span class="mi">15</span>
+<a name="ln-27"></a>    <span class="kt">integer</span><span class="p">,</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">n_ECHO</span> <span class="o">=</span> <span class="n">n_IN</span> <span class="o">+</span> <span class="mi">1</span>
+<a name="ln-28"></a>    <span class="kt">integer</span><span class="p">,</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">n_OUT</span> <span class="o">=</span> <span class="n">n_IN</span> <span class="o">+</span> <span class="mi">2</span>
+<a name="ln-29"></a>    <span class="kt">integer</span><span class="p">,</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">n_DAT</span> <span class="o">=</span> <span class="n">n_IN</span> <span class="o">+</span> <span class="mi">3</span>
+<a name="ln-30"></a>    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">num_seeds</span>
+<a name="ln-31"></a>
+<a name="ln-32"></a>    <span class="c">! Inputs</span>
+<a name="ln-33"></a>    <span class="kt">real</span> <span class="kd">::</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span>
+<a name="ln-34"></a>    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">nsim</span><span class="p">,</span> <span class="n">ntime</span>
+<a name="ln-35"></a>    <span class="kt">logical</span> <span class="kd">::</span> <span class="n">details</span>
+<a name="ln-36"></a>    <span class="kt">real</span><span class="p">,</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">stress</span><span class="p">,</span> <span class="n">temp</span>
+<a name="ln-37"></a>    <span class="kt">real</span> <span class="kd">::</span> <span class="n">Cu_ave</span><span class="p">,</span> <span class="n">Ni_ave</span><span class="p">,</span> <span class="n">Cu_sig</span><span class="p">,</span> <span class="n">Ni_sig</span><span class="p">,</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span>
+<a name="ln-38"></a>
+<a name="ln-39"></a>    <span class="c">! Outputs</span>
+<a name="ln-40"></a>    <span class="kt">real</span><span class="p">,</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">K_hist</span>
+<a name="ln-41"></a>    <span class="kt">real</span><span class="p">,</span> <span class="k">dimension</span><span class="p">(:,:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">Chemistry</span>
+<a name="ln-42"></a>    <span class="kt">real</span><span class="p">,</span> <span class="k">dimension</span><span class="p">(:,:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">cpi_hist</span>
+<a name="ln-43"></a>    <span class="kt">real</span><span class="p">,</span> <span class="k">dimension</span><span class="p">(:,:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">CPI_results</span>
+<a name="ln-44"></a>
+<a name="ln-45"></a>    <span class="c">! Body of miniFAVOR</span>
+<a name="ln-46"></a>
+<a name="ln-47"></a>    <span class="c">!Get input file name</span>
+<a name="ln-48"></a>    <span class="k">call </span><span class="nb">random_seed</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">num_seeds</span><span class="p">)</span>
+<a name="ln-49"></a>    <span class="k">call </span><span class="nb">random_seed</span><span class="p">(</span><span class="n">put</span><span class="o">=</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_seeds</span><span class="p">)])</span>
+<a name="ln-50"></a>
+<a name="ln-51"></a>    <span class="k">print</span> <span class="o">*</span><span class="p">,</span> <span class="s1">&#39;Input file name:&#39;</span>
+<a name="ln-52"></a>    <span class="k">read</span> <span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="n">fn_IN</span>
+<a name="ln-53"></a>
+<a name="ln-54"></a>    <span class="c">!Read input file</span>
+<a name="ln-55"></a>    <span class="k">call </span><span class="n">read_IN</span><span class="p">(</span><span class="n">fn_IN</span><span class="p">,</span> <span class="n">n_IN</span><span class="p">,</span> <span class="n">n_ECHO</span><span class="p">,</span> <span class="p">&amp;</span>
+<a name="ln-56"></a>        <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">nsim</span><span class="p">,</span> <span class="n">ntime</span><span class="p">,</span> <span class="n">details</span><span class="p">,</span> <span class="n">Cu_ave</span><span class="p">,</span> <span class="n">Ni_ave</span><span class="p">,</span> <span class="n">Cu_sig</span><span class="p">,</span> <span class="n">Ni_sig</span><span class="p">,</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span><span class="p">,</span> <span class="n">stress</span><span class="p">,</span> <span class="n">temp</span><span class="p">)</span>
 <a name="ln-57"></a>
-<a name="ln-58"></a>    <span class="c">!Calculate applied stress intensity factor (SIF)</span>
-<a name="ln-59"></a>    <span class="n">SIF_loop</span><span class="p">:</span> <span class="k">do </span><span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ntime</span>
-<a name="ln-60"></a>        <span class="n">K_hist</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="n">Ki_t</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">stress</span><span class="p">(</span><span class="n">j</span><span class="p">))</span>
-<a name="ln-61"></a>    <span class="k">end do </span><span class="n">SIF_loop</span>
-<a name="ln-62"></a>
-<a name="ln-63"></a>    <span class="c">!Start looping over number of simulations</span>
-<a name="ln-64"></a>    <span class="n">Vessel_loop</span><span class="p">:</span> <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nsim</span>
-<a name="ln-65"></a>
-<a name="ln-66"></a>        <span class="c">!Sample chemistry: Chemistry(i,1) is Cu content, Chemistry(i,2) is Ni content</span>
-<a name="ln-67"></a>        <span class="k">call </span><span class="n">sample_chem</span><span class="p">(</span><span class="n">Cu_ave</span><span class="p">,</span> <span class="n">Ni_ave</span><span class="p">,</span> <span class="n">Cu_sig</span><span class="p">,</span> <span class="n">Ni_sig</span><span class="p">,</span> <span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-<a name="ln-68"></a>
-<a name="ln-69"></a>        <span class="c">!Calculate chemistry factor: Chemistry(i,3) is chemistry factor</span>
-<a name="ln-70"></a>        <span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="n">CF</span><span class="p">(</span><span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-<a name="ln-71"></a>
-<a name="ln-72"></a>        <span class="c">!Calculate RTndt for this vessel trial: CPI_results(i,1) is RTndt</span>
-<a name="ln-73"></a>        <span class="n">CPI_results</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">RTndt</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span><span class="p">)</span>
+<a name="ln-58"></a>    <span class="c">!Allocate output arrays</span>
+<a name="ln-59"></a>    <span class="k">allocate</span><span class="p">(</span><span class="n">K_hist</span><span class="p">(</span><span class="n">ntime</span><span class="p">))</span>
+<a name="ln-60"></a>    <span class="k">allocate</span><span class="p">(</span><span class="n">Chemistry</span><span class="p">(</span><span class="n">nsim</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<a name="ln-61"></a>    <span class="k">allocate</span><span class="p">(</span><span class="n">cpi_hist</span><span class="p">(</span><span class="n">nsim</span><span class="p">,</span> <span class="n">ntime</span><span class="p">))</span>
+<a name="ln-62"></a>    <span class="k">allocate</span><span class="p">(</span><span class="n">CPI_results</span><span class="p">(</span><span class="n">nsim</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<a name="ln-63"></a>
+<a name="ln-64"></a>    <span class="c">!Initialize output arrays</span>
+<a name="ln-65"></a>    <span class="n">K_hist</span> <span class="o">=</span>  <span class="mf">0.0</span>
+<a name="ln-66"></a>    <span class="n">Chemistry</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a name="ln-67"></a>    <span class="n">cpi_hist</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a name="ln-68"></a>    <span class="n">CPI_results</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a name="ln-69"></a>
+<a name="ln-70"></a>    <span class="c">!Calculate applied stress intensity factor (SIF)</span>
+<a name="ln-71"></a>    <span class="n">SIF_loop</span><span class="p">:</span> <span class="k">do </span><span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ntime</span>
+<a name="ln-72"></a>        <span class="n">K_hist</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="n">Ki_t</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">stress</span><span class="p">(</span><span class="n">j</span><span class="p">))</span>
+<a name="ln-73"></a>    <span class="k">end do </span><span class="n">SIF_loop</span>
 <a name="ln-74"></a>
-<a name="ln-75"></a>        <span class="c">!Start time loop</span>
-<a name="ln-76"></a>        <span class="n">Time_loop</span><span class="p">:</span> <span class="k">do </span><span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ntime</span>
-<a name="ln-77"></a>            <span class="c">!Calculate instantaneous cpi(t)</span>
-<a name="ln-78"></a>            <span class="n">cpi_hist</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="n">cpi_t</span><span class="p">(</span><span class="n">K_hist</span><span class="p">(</span><span class="n">j</span><span class="p">),</span> <span class="n">CPI_results</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">temp</span><span class="p">(</span><span class="n">j</span><span class="p">))</span>
-<a name="ln-79"></a>        <span class="k">end do </span><span class="n">Time_loop</span>
+<a name="ln-75"></a>    <span class="c">!Start looping over number of simulations</span>
+<a name="ln-76"></a>    <span class="n">Vessel_loop</span><span class="p">:</span> <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nsim</span>
+<a name="ln-77"></a>
+<a name="ln-78"></a>        <span class="c">!Sample chemistry: Chemistry(i,1) is Cu content, Chemistry(i,2) is Ni content</span>
+<a name="ln-79"></a>        <span class="k">call </span><span class="n">sample_chem</span><span class="p">(</span><span class="n">Cu_ave</span><span class="p">,</span> <span class="n">Ni_ave</span><span class="p">,</span> <span class="n">Cu_sig</span><span class="p">,</span> <span class="n">Ni_sig</span><span class="p">,</span> <span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 <a name="ln-80"></a>
-<a name="ln-81"></a>        <span class="c">!Calculate CPI for vessel &#39;i&#39;</span>
-<a name="ln-82"></a>        <span class="n">CPI_results</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="nb">maxval</span><span class="p">(</span><span class="n">cpi_hist</span><span class="p">(</span><span class="n">i</span><span class="p">,:))</span>
+<a name="ln-81"></a>        <span class="c">!Calculate chemistry factor: Chemistry(i,3) is chemistry factor</span>
+<a name="ln-82"></a>        <span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="n">CF</span><span class="p">(</span><span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 <a name="ln-83"></a>
-<a name="ln-84"></a>        <span class="c">!Calculate moving average CPI for trials executed so far</span>
-<a name="ln-85"></a>        <span class="n">CPI_results</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">CPI_results</span><span class="p">(:,</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="n">i</span>
+<a name="ln-84"></a>        <span class="c">!Calculate RTndt for this vessel trial: CPI_results(i,1) is RTndt</span>
+<a name="ln-85"></a>        <span class="n">CPI_results</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">RTndt</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span><span class="p">)</span>
 <a name="ln-86"></a>
-<a name="ln-87"></a>    <span class="k">end do </span><span class="n">Vessel_loop</span>
-<a name="ln-88"></a>
-<a name="ln-89"></a>    <span class="k">call </span><span class="n">write_OUT</span><span class="p">(</span><span class="n">fn_IN</span><span class="p">,</span> <span class="n">n_OUT</span><span class="p">,</span> <span class="n">n_DAT</span><span class="p">)</span>
-<a name="ln-90"></a>
-<a name="ln-91"></a>    <span class="k">end program </span><span class="n">miniFAVOR</span>
+<a name="ln-87"></a>        <span class="c">!Start time loop</span>
+<a name="ln-88"></a>        <span class="n">Time_loop</span><span class="p">:</span> <span class="k">do </span><span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ntime</span>
+<a name="ln-89"></a>            <span class="c">!Calculate instantaneous cpi(t)</span>
+<a name="ln-90"></a>            <span class="n">cpi_hist</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="n">cpi_t</span><span class="p">(</span><span class="n">K_hist</span><span class="p">(</span><span class="n">j</span><span class="p">),</span> <span class="n">CPI_results</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">temp</span><span class="p">(</span><span class="n">j</span><span class="p">))</span>
+<a name="ln-91"></a>        <span class="k">end do </span><span class="n">Time_loop</span>
+<a name="ln-92"></a>
+<a name="ln-93"></a>        <span class="c">!Calculate CPI for vessel &#39;i&#39;</span>
+<a name="ln-94"></a>        <span class="n">CPI_results</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="nb">maxval</span><span class="p">(</span><span class="n">cpi_hist</span><span class="p">(</span><span class="n">i</span><span class="p">,:))</span>
+<a name="ln-95"></a>
+<a name="ln-96"></a>        <span class="c">!Calculate moving average CPI for trials executed so far</span>
+<a name="ln-97"></a>        <span class="n">CPI_results</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">CPI_results</span><span class="p">(:,</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="n">i</span>
+<a name="ln-98"></a>
+<a name="ln-99"></a>    <span class="k">end do </span><span class="n">Vessel_loop</span>
+<a name="ln-100"></a>
+<a name="ln-101"></a>    <span class="k">call </span><span class="n">write_OUT</span><span class="p">(</span><span class="n">fn_IN</span><span class="p">,</span> <span class="n">n_OUT</span><span class="p">,</span> <span class="n">n_DAT</span><span class="p">,</span> <span class="p">&amp;</span>
+<a name="ln-102"></a>        <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">nsim</span><span class="p">,</span> <span class="n">ntime</span><span class="p">,</span> <span class="n">details</span><span class="p">,</span> <span class="n">Cu_ave</span><span class="p">,</span> <span class="n">Ni_ave</span><span class="p">,</span> <span class="n">Cu_sig</span><span class="p">,</span> <span class="n">Ni_sig</span><span class="p">,</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span><span class="p">,</span> <span class="p">&amp;</span>
+<a name="ln-103"></a>        <span class="n">CPI_results</span><span class="p">,</span> <span class="n">K_hist</span><span class="p">,</span> <span class="n">Chemistry</span><span class="p">)</span>
+<a name="ln-104"></a>
+<a name="ln-105"></a>    <span class="k">end program </span><span class="n">miniFAVOR</span>
 </pre></div>
 
     </section>
@@ -375,7 +389,7 @@
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-12-03 21:49  
+             on 2020-12-03 22:02  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> miniFAVOR was developed by </p></div>
