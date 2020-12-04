@@ -58,6 +58,9 @@ design, and support for Astropy functionality in ``Gala`` will enable exciting
 scientific explorations of forthcoming data releases from the *Gaia* mission
 [@gaia] by students and experts alike.
 
+# Statement of Need
+There is a large number of scientific legacy codes written in old versions of Fortran.  The research development cycles, extensive validation and maturity of these applications cannot be overlooked. It is vital to preserve the large knowledge based contained in these legacy codes while at the same time enable the existence of codes where new capabilities can be easily added and performance can be improve by exploiting new hardware technologies.   [ Add reference for legacy applications: @taylor2015]
+
 # Mathematics
 
 Single dollars ($) are required for inline mathematics e.g. $f(x) = e^{\pi/x}$
