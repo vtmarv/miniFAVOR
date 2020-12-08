@@ -50,5 +50,3 @@ The [developer documentation] is published via GitHub Pages.
 [`ford`]: https://github.com/Fortran-FOSS-Programmers/ford
 [new issue]: https://github.com/everythingfunctional/miniFAVOR/issues/new
 [developer documentation]: https://sourceryinstitute.github.io/miniFAVOR/
-
-this is a test
