@@ -136,19 +136,19 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 0.1% of total for modules and submodules.">10 statements</a>
+    title=" 0.3% of total for modules and submodules.">40 statements</a>
      </li> 
      
      
      
-    <li><i class="fa fa-code"></i><a href="../src/randomness_s.f90"> Source File</a></li>
+    <li><i class="fa fa-code"></i><a href="../src/random_samples_s.f90"> Source File</a></li>
      
      
   </ul>
   <ol class="breadcrumb in-well text-right">
   
     
-     <li><a href='../sourcefile/randomness_s.f90.html'>randomness_s.f90</a></li>
+     <li><a href='../sourcefile/random_samples_s.f90.html'>random_samples_s.f90</a></li>
     
   
      <li class="active">randomness_s</li>
@@ -193,7 +193,17 @@
   <div id="modprocs-0" class="panel-collapse collapse">
     <div class="list-group">
       
+      <a class="list-group-item" href="../module/randomness_s.html#proc-cu_local">cu_local</a>
+      
+      <a class="list-group-item" href="../module/randomness_s.html#proc-cu_sig_local">cu_sig_local</a>
+      
       <a class="list-group-item" href="../module/randomness_s.html#proc-define">define</a>
+      
+      <a class="list-group-item" href="../module/randomness_s.html#proc-ni_local">ni_local</a>
+      
+      <a class="list-group-item" href="../module/randomness_s.html#proc-phi">phi</a>
+      
+      <a class="list-group-item" href="../module/randomness_s.html#proc-write_formatted">write_formatted</a>
       
     </div>
   </div>
@@ -219,6 +229,14 @@
   <h3 class="panel-title">Uses</h3>
       </div>
       <ul class="list-group">
+      
+      <li class="list-group-item">
+  <ul class="list-inline">
+    
+    <li><a href='../module/assertions_interface.html'>assertions_interface</a></li>
+    
+  </ul>
+      </li>
       
       
       <li class="list-group-item">
@@ -267,7 +285,17 @@
   <div id="modprocs-1" class="panel-collapse collapse">
     <div class="list-group">
       
+      <a class="list-group-item" href="../module/randomness_s.html#proc-cu_local">cu_local</a>
+      
+      <a class="list-group-item" href="../module/randomness_s.html#proc-cu_sig_local">cu_sig_local</a>
+      
       <a class="list-group-item" href="../module/randomness_s.html#proc-define">define</a>
+      
+      <a class="list-group-item" href="../module/randomness_s.html#proc-ni_local">ni_local</a>
+      
+      <a class="list-group-item" href="../module/randomness_s.html#proc-phi">phi</a>
+      
+      <a class="list-group-item" href="../module/randomness_s.html#proc-write_formatted">write_formatted</a>
       
     </div>
   </div>
@@ -307,6 +335,130 @@
         
         <section>
         <h2>Module Procedures</h2>
+        
+        
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-cu_local"></span><h3>
+module procedure <a href='../proc/cu_local.html'>cu_local</a> <small>pure module function cu_local(self) result(self_cu_local)</small>
+    
+    
+   <a href='../interface/cu_local.html'><button type="button" class="btn btn-info depwarn">Interface &rarr;</button></a>
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/random_samples_t.html'>random_samples_t</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>real
+  </small></h4>
+  
+    
+
+  </div>
+  </div>
+
+        
+        
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-cu_sig_local"></span><h3>
+module procedure <a href='../proc/cu_sig_local.html'>cu_sig_local</a> <small>pure module function cu_sig_local(self) result(self_cu_sig_local)</small>
+    
+    
+   <a href='../interface/cu_sig_local.html'><button type="button" class="btn btn-info depwarn">Interface &rarr;</button></a>
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/random_samples_t.html'>random_samples_t</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>real
+  </small></h4>
+  
+    
+
+  </div>
+  </div>
+
         
         
   <div class="panel panel-default">
@@ -361,6 +513,258 @@ module procedure <a href='../proc/define.html'>define</a> <small>module subrouti
   </div>
 
         
+        
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-ni_local"></span><h3>
+module procedure <a href='../proc/ni_local.html'>ni_local</a> <small>pure module function ni_local(self) result(self_ni_local)</small>
+    
+    
+   <a href='../interface/ni_local.html'><button type="button" class="btn btn-info depwarn">Interface &rarr;</button></a>
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/random_samples_t.html'>random_samples_t</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>real
+  </small></h4>
+  
+    
+
+  </div>
+  </div>
+
+        
+        
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-phi"></span><h3>
+module procedure <a href='../proc/phi.html'>phi</a> <small>pure module function phi(self) result(self_phi)</small>
+    
+    
+   <a href='../interface/phi.html'><button type="button" class="btn btn-info depwarn">Interface &rarr;</button></a>
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/random_samples_t.html'>random_samples_t</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>real
+  </small></h4>
+  
+    
+
+  </div>
+  </div>
+
+        
+        
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-write_formatted"></span><h3>
+module procedure <a href='../proc/write_formatted.html'>write_formatted</a> <small>module subroutine write_formatted(self, unit, iotype, v_list, iostat, iomsg)</small>
+    
+    
+   <a href='../interface/write_formatted.html'><button type="button" class="btn btn-info depwarn">Interface &rarr;</button></a>
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/random_samples_t.html'>random_samples_t</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>unit</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>iotype</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>v_list</strong>(:)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>iostat</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>iomsg</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+        
         </section>    
         
     
@@ -380,7 +784,7 @@ module procedure <a href='../proc/define.html'>define</a> <small>module subrouti
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-12-07 21:53  
+             on 2020-12-10 18:42  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> miniFAVOR was developed by </p></div>

@@ -136,7 +136,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 0.1% of total for procedures.">11 statements</a>
+    title=" 0.1% of total for procedures.">13 statements</a>
      </li> 
      
      
@@ -209,13 +209,32 @@
     
     <div class="col-md-9" id='text'>
     <h2>
-public subroutine sample_chem(cu_ave, ni_ave, cu_sig, ni_sig, cu_local, ni_local, cu_sig_local_sample, cu_local_sample, ni_local_sample)
+public subroutine sample_chem(cu_ave, ni_ave, cu_sig, ni_sig, cu_local, ni_local, samples)
     
     
    
 </h2>
     
   
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+      
+      <li class="list-group-item">
+  <ul class="list-inline">
+    
+    <li><a href='../module/randomness_m.html'>randomness_m</a></li>
+    
+  </ul>
+      </li>
+      
+      
+      
+      </ul>
+    </div>
+    
 
 
     
@@ -328,42 +347,12 @@ public subroutine sample_chem(cu_ave, ni_ave, cu_sig, ni_sig, cu_local, ni_local
   
 <tr>
   
-  <td><span class="anchor" id="variable-cu_sig_local_sample"></span>real,</td>
+  <td><span class="anchor" id="variable-samples"></span>type(<a href='../type/random_samples_t.html'>random_samples_t</a>),</td>
   <td>intent(in)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>cu_sig_local_sample</strong></td><td></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-cu_local_sample"></span>real,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>cu_local_sample</strong></td><td></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-ni_local_sample"></span>real,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>ni_local_sample</strong></td><td></td>
+  <td><strong>samples</strong></td><td></td>
   
 </tr>
 
@@ -434,23 +423,26 @@ public subroutine sample_chem(cu_ave, ni_ave, cu_sig, ni_sig, cu_local, ni_local
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">sample_chem</span><span class="p">(</span><span class="n">Cu_ave</span><span class="p">,</span> <span class="n">Ni_ave</span><span class="p">,</span> <span class="n">Cu_sig</span><span class="p">,</span> <span class="n">Ni_sig</span><span class="p">,</span> <span class="n">Cu_local</span><span class="p">,</span> <span class="n">Ni_local</span><span class="p">,</span> <span class="p">&amp;</span>
-          <span class="n">Cu_sig_local_sample</span><span class="p">,</span> <span class="n">Cu_local_sample</span><span class="p">,</span> <span class="n">Ni_local_sample</span><span class="p">)</span>
+    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">sample_chem</span><span class="p">(</span><span class="n">Cu_ave</span><span class="p">,</span> <span class="n">Ni_ave</span><span class="p">,</span> <span class="n">Cu_sig</span><span class="p">,</span> <span class="n">Ni_sig</span><span class="p">,</span> <span class="n">Cu_local</span><span class="p">,</span> <span class="n">Ni_local</span><span class="p">,</span> <span class="n">samples</span><span class="p">)</span>
+        <span class="k">use </span><span class="n">randomness_m</span><span class="p">,</span> <span class="n">only</span> <span class="p">:</span> <span class="n">random_samples_t</span>
 
         <span class="c">!Variables</span>
+        <span class="k">type</span><span class="p">(</span><span class="n">random_samples_t</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">samples</span>
         <span class="kt">real</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">Cu_ave</span><span class="p">,</span> <span class="n">Ni_ave</span><span class="p">,</span> <span class="n">Cu_sig</span><span class="p">,</span> <span class="n">Ni_sig</span>
         <span class="kt">real</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">Cu_local</span><span class="p">,</span> <span class="n">Ni_local</span>
-        <span class="kt">real</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">Cu_sig_local_sample</span><span class="p">,</span> <span class="n">Cu_local_sample</span><span class="p">,</span> <span class="n">Ni_local_sample</span>
         <span class="kt">real</span> <span class="kd">::</span> <span class="n">Cu_bar</span><span class="p">,</span> <span class="n">Cu_sig_star</span><span class="p">,</span> <span class="n">Cu_sig_local</span>
+
+        <span class="c">! Requires</span>
+        <span class="k">call </span><span class="n">assert</span><span class="p">(</span><span class="n">samples</span><span class="p">%</span><span class="n">user_defined</span><span class="p">(),</span> <span class="s2">&quot;random_samples_t%sample_chem: samples%user_defined()&quot;</span><span class="p">)</span>
 
         <span class="c">!Sample local copper content based on weld copper sampling procedure</span>
         <span class="n">Cu_bar</span> <span class="o">=</span> <span class="n">Cu_ave</span> <span class="o">*</span> <span class="n">Cu_sig</span>
         <span class="n">Cu_sig_star</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mf">0.0718</span><span class="o">*</span><span class="n">Cu_ave</span><span class="p">,</span> <span class="mf">0.0185</span><span class="p">)</span>
-        <span class="n">Cu_sig_local</span> <span class="o">=</span> <span class="n">Cu_bar</span> <span class="o">+</span> <span class="n">Cu_sig_star</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span><span class="o">*</span><span class="nb">erfc</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">Cu_sig_local_sample</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">Cu_local</span> <span class="o">=</span> <span class="n">Cu_ave</span> <span class="o">+</span> <span class="n">Cu_sig_local</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span><span class="o">*</span><span class="nb">erfc</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">Cu_local_sample</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">Cu_sig_local</span> <span class="o">=</span> <span class="n">Cu_bar</span> <span class="o">+</span> <span class="n">Cu_sig_star</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span><span class="o">*</span><span class="nb">erfc</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">samples</span><span class="p">%</span><span class="n">Cu_sig_local</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">Cu_local</span> <span class="o">=</span> <span class="n">Cu_ave</span> <span class="o">+</span> <span class="n">Cu_sig_local</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span><span class="o">*</span><span class="nb">erfc</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">samples</span><span class="p">%</span><span class="n">Cu_local</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
         <span class="c">!Sample local nickel content based on weld nickel heat 34B009 &amp; W5214 procedure</span>
-        <span class="n">Ni_local</span> <span class="o">=</span> <span class="n">Ni_ave</span> <span class="o">+</span> <span class="n">Ni_sig</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span><span class="o">*</span><span class="nb">erfc</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">Ni_local_sample</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">Ni_local</span> <span class="o">=</span> <span class="n">Ni_ave</span> <span class="o">+</span> <span class="n">Ni_sig</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span><span class="o">*</span><span class="nb">erfc</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">samples</span><span class="p">%</span><span class="n">Ni_local</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="k">end subroutine </span><span class="n">sample_chem</span>
 </pre></div>
@@ -474,7 +466,7 @@ public subroutine sample_chem(cu_ave, ni_ave, cu_sig, ni_sig, cu_local, ni_local
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-12-07 21:53  
+             on 2020-12-10 18:42  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> miniFAVOR was developed by </p></div>

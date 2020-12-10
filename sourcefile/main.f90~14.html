@@ -136,7 +136,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 0.2% of total for source files.">29 statements</a>
+    title=" 0.1% of total for source files.">21 statements</a>
      </li> 
      
      
@@ -278,42 +278,30 @@
 <a name="ln-5"></a><span class="k">    call </span><span class="n">run</span><span class="p">()</span>
 <a name="ln-6"></a><span class="k">contains</span>
 <a name="ln-7"></a><span class="k">    subroutine </span><span class="n">run</span><span class="p">()</span>
-<a name="ln-8"></a>        <span class="k">use </span><span class="n">hanging_indent_test</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="p">&amp;</span>
-<a name="ln-9"></a>                <span class="n">hanging_indent_hanging_indent</span> <span class="o">=&gt;</span> <span class="n">test_hanging_indent</span>
-<a name="ln-10"></a>        <span class="k">use </span><span class="n">indent_test</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="p">&amp;</span>
-<a name="ln-11"></a>                <span class="n">indent_indent</span> <span class="o">=&gt;</span> <span class="n">test_indent</span>
-<a name="ln-12"></a>        <span class="k">use </span><span class="n">join_test</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="p">&amp;</span>
-<a name="ln-13"></a>                <span class="n">join_join</span> <span class="o">=&gt;</span> <span class="n">test_join</span>
-<a name="ln-14"></a>        <span class="k">use </span><span class="n">read_file_lines_test</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="p">&amp;</span>
-<a name="ln-15"></a>                <span class="n">read_file_lines_read_file_lines</span> <span class="o">=&gt;</span> <span class="n">test_read_file_lines</span>
-<a name="ln-16"></a>        <span class="k">use </span><span class="n">read_file_test</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="p">&amp;</span>
-<a name="ln-17"></a>                <span class="n">read_file_read_file</span> <span class="o">=&gt;</span> <span class="n">test_read_file</span>
-<a name="ln-18"></a>        <span class="k">use </span><span class="n">split_at_test</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="p">&amp;</span>
-<a name="ln-19"></a>                <span class="n">split_at_split_at</span> <span class="o">=&gt;</span> <span class="n">test_split_at</span>
-<a name="ln-20"></a>        <span class="k">use </span><span class="n">starts_with_test</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="p">&amp;</span>
-<a name="ln-21"></a>                <span class="n">starts_with_starts_with</span> <span class="o">=&gt;</span> <span class="n">test_starts_with</span>
-<a name="ln-22"></a>        <span class="k">use </span><span class="n">to_string_test</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="p">&amp;</span>
-<a name="ln-23"></a>                <span class="n">to_string_to_string_for_doubles</span> <span class="o">=&gt;</span> <span class="n">test_to_string_for_doubles</span><span class="p">,</span> <span class="p">&amp;</span>
-<a name="ln-24"></a>                <span class="n">to_string_to_string_for_integers</span> <span class="o">=&gt;</span> <span class="n">test_to_string_for_integers</span>
-<a name="ln-25"></a>        <span class="k">use </span><span class="n">vegetables</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="n">test_item_t</span><span class="p">,</span> <span class="n">test_that</span><span class="p">,</span> <span class="n">run_tests</span>
-<a name="ln-26"></a>
-<a name="ln-27"></a>        <span class="k">type</span><span class="p">(</span><span class="n">test_item_t</span><span class="p">)</span> <span class="kd">::</span> <span class="n">tests</span>
-<a name="ln-28"></a>        <span class="k">type</span><span class="p">(</span><span class="n">test_item_t</span><span class="p">)</span> <span class="kd">::</span> <span class="n">individual_tests</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
-<a name="ln-29"></a>
-<a name="ln-30"></a>        <span class="n">individual_tests</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">hanging_indent_hanging_indent</span><span class="p">()</span>
-<a name="ln-31"></a>        <span class="n">individual_tests</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">indent_indent</span><span class="p">()</span>
-<a name="ln-32"></a>        <span class="n">individual_tests</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="n">join_join</span><span class="p">()</span>
-<a name="ln-33"></a>        <span class="n">individual_tests</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="n">read_file_lines_read_file_lines</span><span class="p">()</span>
-<a name="ln-34"></a>        <span class="n">individual_tests</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">=</span> <span class="n">read_file_read_file</span><span class="p">()</span>
-<a name="ln-35"></a>        <span class="n">individual_tests</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">=</span> <span class="n">split_at_split_at</span><span class="p">()</span>
-<a name="ln-36"></a>        <span class="n">individual_tests</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">=</span> <span class="n">starts_with_starts_with</span><span class="p">()</span>
-<a name="ln-37"></a>        <span class="n">individual_tests</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">=</span> <span class="n">to_string_to_string_for_doubles</span><span class="p">()</span>
-<a name="ln-38"></a>        <span class="n">individual_tests</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="o">=</span> <span class="n">to_string_to_string_for_integers</span><span class="p">()</span>
-<a name="ln-39"></a>        <span class="n">tests</span> <span class="o">=</span> <span class="n">test_that</span><span class="p">(</span><span class="n">individual_tests</span><span class="p">)</span>
-<a name="ln-40"></a>
-<a name="ln-41"></a>        <span class="k">call </span><span class="n">run_tests</span><span class="p">(</span><span class="n">tests</span><span class="p">)</span>
-<a name="ln-42"></a>    <span class="k">end subroutine</span>
-<a name="ln-43"></a><span class="k">end program</span>
+<a name="ln-8"></a>        <span class="k">use </span><span class="n">collective_subroutines_test</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="p">&amp;</span>
+<a name="ln-9"></a>                <span class="n">collective_subroutines_co_all</span> <span class="o">=&gt;</span> <span class="n">test_co_all</span><span class="p">,</span> <span class="p">&amp;</span>
+<a name="ln-10"></a>                <span class="n">collective_subroutines_co_sum</span> <span class="o">=&gt;</span> <span class="n">test_co_sum</span>
+<a name="ln-11"></a>        <span class="k">use </span><span class="n">data_partition_test</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="p">&amp;</span>
+<a name="ln-12"></a>                <span class="n">data_partition_data_partition</span> <span class="o">=&gt;</span> <span class="n">test_data_partition</span>
+<a name="ln-13"></a>        <span class="k">use </span><span class="n">object_interface_test</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="p">&amp;</span>
+<a name="ln-14"></a>                <span class="n">object_interface_object</span> <span class="o">=&gt;</span> <span class="n">test_object</span>
+<a name="ln-15"></a>        <span class="k">use </span><span class="n">single_image_intrinsics_test</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="p">&amp;</span>
+<a name="ln-16"></a>                <span class="n">single_image_intrinsics_findloc</span> <span class="o">=&gt;</span> <span class="n">test_findloc</span>
+<a name="ln-17"></a>        <span class="k">use </span><span class="n">vegetables</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="n">test_item_t</span><span class="p">,</span> <span class="n">test_that</span><span class="p">,</span> <span class="n">run_tests</span>
+<a name="ln-18"></a>
+<a name="ln-19"></a>        <span class="k">type</span><span class="p">(</span><span class="n">test_item_t</span><span class="p">)</span> <span class="kd">::</span> <span class="n">tests</span>
+<a name="ln-20"></a>        <span class="k">type</span><span class="p">(</span><span class="n">test_item_t</span><span class="p">)</span> <span class="kd">::</span> <span class="n">individual_tests</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<a name="ln-21"></a>
+<a name="ln-22"></a>        <span class="n">individual_tests</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">collective_subroutines_co_all</span><span class="p">()</span>
+<a name="ln-23"></a>        <span class="n">individual_tests</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">collective_subroutines_co_sum</span><span class="p">()</span>
+<a name="ln-24"></a>        <span class="n">individual_tests</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="n">data_partition_data_partition</span><span class="p">()</span>
+<a name="ln-25"></a>        <span class="n">individual_tests</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="n">object_interface_object</span><span class="p">()</span>
+<a name="ln-26"></a>        <span class="n">individual_tests</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">=</span> <span class="n">single_image_intrinsics_findloc</span><span class="p">()</span>
+<a name="ln-27"></a>        <span class="n">tests</span> <span class="o">=</span> <span class="n">test_that</span><span class="p">(</span><span class="n">individual_tests</span><span class="p">)</span>
+<a name="ln-28"></a>
+<a name="ln-29"></a>        <span class="k">call </span><span class="n">run_tests</span><span class="p">(</span><span class="n">tests</span><span class="p">)</span>
+<a name="ln-30"></a>    <span class="k">end subroutine</span>
+<a name="ln-31"></a><span class="k">end program</span>
 </pre></div>
 
     </section>
@@ -332,7 +320,7 @@
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-12-07 21:53  
+             on 2020-12-10 18:42  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> miniFAVOR was developed by </p></div>

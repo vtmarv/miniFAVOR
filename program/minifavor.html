@@ -136,7 +136,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="11.5% of total for programs.">55 statements</a>
+    title="11.0% of total for programs.">55 statements</a>
      </li> 
      
      
@@ -179,9 +179,9 @@
   <div id="vars-0" class="panel-collapse collapse">
     <div class="list-group">
       
-      <a class="list-group-item" href="../program/minifavor.html#variable-a%7E5">a</a>
+      <a class="list-group-item" href="../program/minifavor.html#variable-a%7E9">a</a>
       
-      <a class="list-group-item" href="../program/minifavor.html#variable-b%7E4">b</a>
+      <a class="list-group-item" href="../program/minifavor.html#variable-b%7E6">b</a>
       
       <a class="list-group-item" href="../program/minifavor.html#variable-chemistry%7E2">chemistry</a>
       
@@ -225,7 +225,7 @@
       
       <a class="list-group-item" href="../program/minifavor.html#variable-rtndt0%7E4">rtndt0</a>
       
-      <a class="list-group-item" href="../program/minifavor.html#variable-samples">samples</a>
+      <a class="list-group-item" href="../program/minifavor.html#variable-samples%7E2">samples</a>
       
       <a class="list-group-item" href="../program/minifavor.html#variable-stress%7E3">stress</a>
       
@@ -314,9 +314,9 @@
   <div id="vars-1" class="panel-collapse collapse">
     <div class="list-group">
       
-      <a class="list-group-item" href="../program/minifavor.html#variable-a%7E5">a</a>
+      <a class="list-group-item" href="../program/minifavor.html#variable-a%7E9">a</a>
       
-      <a class="list-group-item" href="../program/minifavor.html#variable-b%7E4">b</a>
+      <a class="list-group-item" href="../program/minifavor.html#variable-b%7E6">b</a>
       
       <a class="list-group-item" href="../program/minifavor.html#variable-chemistry%7E2">chemistry</a>
       
@@ -360,7 +360,7 @@
       
       <a class="list-group-item" href="../program/minifavor.html#variable-rtndt0%7E4">rtndt0</a>
       
-      <a class="list-group-item" href="../program/minifavor.html#variable-samples">samples</a>
+      <a class="list-group-item" href="../program/minifavor.html#variable-samples%7E2">samples</a>
       
       <a class="list-group-item" href="../program/minifavor.html#variable-stress%7E3">stress</a>
       
@@ -422,7 +422,7 @@
   
 <tr>
   
-  <td><span class="anchor" id="variable-a%7E5"></span>real</td>
+  <td><span class="anchor" id="variable-a%7E9"></span>real</td>
   
   
   <td></td><td>::</td>
@@ -436,7 +436,7 @@
   
 <tr>
   
-  <td><span class="anchor" id="variable-b%7E4"></span>real</td>
+  <td><span class="anchor" id="variable-b%7E6"></span>real</td>
   
   
   <td></td><td>::</td>
@@ -744,7 +744,7 @@
   
 <tr>
   
-  <td><span class="anchor" id="variable-samples"></span>type(<a href='../type/random_samples_t.html'>random_samples_t</a>),</td>
+  <td><span class="anchor" id="variable-samples%7E2"></span>type(<a href='../type/random_samples_t.html'>random_samples_t</a>),</td>
   
   
   <td>allocatable</td><td>::</td>
@@ -875,14 +875,13 @@
     <span class="n">Vessel_loop</span><span class="p">:</span> <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nsim</span>
 
         <span class="c">!Sample chemistry: Chemistry(i,1) is Cu content, Chemistry(i,2) is Ni content</span>
-        <span class="k">call </span><span class="n">sample_chem</span><span class="p">(</span><span class="n">Cu_ave</span><span class="p">,</span> <span class="n">Ni_ave</span><span class="p">,</span> <span class="n">Cu_sig</span><span class="p">,</span> <span class="n">Ni_sig</span><span class="p">,</span> <span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">&amp;</span>
-            <span class="n">samples</span><span class="p">(</span><span class="n">i</span><span class="p">)%</span><span class="n">Cu_sig_local</span><span class="p">,</span> <span class="n">samples</span><span class="p">(</span><span class="n">i</span><span class="p">)%</span><span class="n">Cu_local</span><span class="p">,</span> <span class="n">samples</span><span class="p">(</span><span class="n">i</span><span class="p">)%</span><span class="n">Ni_local</span><span class="p">)</span>
+        <span class="k">call </span><span class="n">sample_chem</span><span class="p">(</span><span class="n">Cu_ave</span><span class="p">,</span> <span class="n">Ni_ave</span><span class="p">,</span> <span class="n">Cu_sig</span><span class="p">,</span> <span class="n">Ni_sig</span><span class="p">,</span> <span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">samples</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
 
         <span class="c">!Calculate chemistry factor: Chemistry(i,3) is chemistry factor</span>
         <span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="n">CF</span><span class="p">(</span><span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 
         <span class="c">!Calculate RTndt for this vessel trial: CPI_results(i,1) is RTndt</span>
-        <span class="n">CPI_results</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">RTndt</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span><span class="p">,</span> <span class="n">samples</span><span class="p">(</span><span class="n">i</span><span class="p">)%</span><span class="n">phi</span><span class="p">)</span>
+        <span class="n">CPI_results</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">RTndt</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span><span class="p">,</span> <span class="n">samples</span><span class="p">(</span><span class="n">i</span><span class="p">)%</span><span class="n">phi</span><span class="p">())</span>
 
         <span class="c">!Start time loop</span>
         <span class="n">Time_loop</span><span class="p">:</span> <span class="k">do </span><span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ntime</span>
@@ -923,7 +922,7 @@
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-12-07 21:53  
+             on 2020-12-10 18:42  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> miniFAVOR was developed by </p></div>

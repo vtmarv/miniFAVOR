@@ -10,7 +10,7 @@
     <meta name="author" content="" >
     <link rel="icon" href="../favicon.png">
 
-    <title>randomness_m.f90 &ndash; miniFAVOR</title>
+    <title>assertions_interface &ndash; miniFAVOR</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -118,8 +118,8 @@
     
   
   <div class="row">
-    <h1>randomness_m.f90
-    <small>Source File</small>
+    <h1>assertions_interface 
+    <small>Module</small>
     
     </h1>
     
@@ -136,20 +136,22 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 0.1% of total for source files.">19 statements</a>
+    title=" 0.1% of total for modules and submodules.">15 statements</a>
      </li> 
      
      
      
-    <li><i class="fa fa-code"></i><a href="../src/randomness_m.f90"> Source File</a></li>
+    <li><i class="fa fa-code"></i><a href="../src/assertions_interface.F90"> Source File</a></li>
      
      
   </ul>
   <ol class="breadcrumb in-well text-right">
   
     
+     <li><a href='../sourcefile/assertions_interface.f90.html'>assertions_interface.F90</a></li>
+    
   
-     <li class="active">randomness_m.f90</li>
+     <li class="active">assertions_interface</li>
   </ol>
 </div>
 </div>
@@ -161,6 +163,7 @@
 </script>
 
   </div>
+  
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
     
@@ -171,27 +174,18 @@
 
 
 
-
-
-
-
 <div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#mods-0">Modules</a></h3></div>
-  <div id="mods-0" class="panel-collapse collapse">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
     <div class="list-group">
       
-      <a class="list-group-item" href="../module/randomness_m.html">randomness_m</a>
+      <a class="list-group-item" href="../module/assertions_interface.html#variable-assertions">assertions</a>
+      
+      <a class="list-group-item" href="../module/assertions_interface.html#variable-max_errmsg_len">max_errmsg_len</a>
       
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
 
 
 
@@ -202,23 +196,73 @@
 
 
 <div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../sourcefile/randomness_m.f90.html#src">randomness_m.f90</a>
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#inters-0">Interfaces</a></h3></div>
+  <div id="inters-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/assertions_interface.html#interface-assert">assert</a>
+      
+    </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 </div>
 
     </div>
+    
     <div class="col-md-9" id='text'>
-      
+    <div class="codehilite"><pre><span></span>use assertions_interface, only : assert
+call assert( 2 &gt; 1, &quot;2 &gt; 1&quot;)
+</pre></div>
+
+
+<p>Turn off assertions in production code by setting .true. to .false. via the preprocessor:</p>
+<div class="codehilite"><pre><span></span>caf -cpp -DUSE_ASSERTIONS=.false. -c assertions_interface.f90
+</pre></div>
+
+
+<p>Doing so may eliminate any associated runtime overhead by enabling optimizing compilers to ignore
+ the assertion procedure body during a dead-code-removal phase of optimization.</p>
       <br>
     
+  
+
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Used by</h3>
+      </div>
+      <ul class="list-group">
+  
+  <li class="list-group-item">  
+    <ul class="list-inline">
+      <li><h5>Descendants:</h5></li>
       
+      <li><a href='../module/assertions_implementation.html'>assertions_implementation</a></li>
       
+    </ul>
+  </li>
+  
+  
+      </ul>
+    </div>
+    
+
+    <br>
 
     <section class="visible-xs visible-sm hidden-md">
       
@@ -227,16 +271,33 @@
 
 
 
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/assertions_interface.html#variable-assertions">assertions</a>
+      
+      <a class="list-group-item" href="../module/assertions_interface.html#variable-max_errmsg_len">max_errmsg_len</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
 
 
 
 
 <div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#mods-1">Modules</a></h3></div>
-  <div id="mods-1" class="panel-collapse collapse">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#inters-1">Interfaces</a></h3></div>
+  <div id="inters-1" class="panel-collapse collapse">
     <div class="list-group">
       
-      <a class="list-group-item" href="../module/randomness_m.html">randomness_m</a>
+      <a class="list-group-item" href="../module/assertions_interface.html#interface-assert">assert</a>
       
     </div>
   </div>
@@ -255,47 +316,174 @@
 
 
 
-
-
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../sourcefile/randomness_m.f90.html#src">randomness_m.f90</a>
-  </div>
-</div>
-
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
+    
+
+    
     <section>
-      <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="hl"><pre><span></span><a name="ln-1"></a><span class="k">module </span><span class="n">randomness_m</span>
-<a name="ln-2"></a>  <span class="k">implicit none</span>
-<a name="ln-3"></a><span class="k">  private</span>
-<a name="ln-4"></a><span class="k">  public</span> <span class="kd">::</span> <span class="n">random_samples_t</span>
-<a name="ln-5"></a>
-<a name="ln-6"></a>  <span class="k">type</span> <span class="kd">::</span> <span class="n">random_samples_t</span>
-<a name="ln-7"></a>    <span class="kt">real</span> <span class="kd">::</span> <span class="n">Cu_sig_local</span>
-<a name="ln-8"></a>    <span class="kt">real</span> <span class="kd">::</span> <span class="n">Cu_local</span>
-<a name="ln-9"></a>    <span class="kt">real</span> <span class="kd">::</span> <span class="n">Ni_local</span>
-<a name="ln-10"></a>    <span class="kt">real</span> <span class="kd">::</span> <span class="n">phi</span>
-<a name="ln-11"></a>  <span class="k">contains</span>
-<a name="ln-12"></a><span class="k">    procedure</span> <span class="kd">::</span> <span class="n">define</span>
-<a name="ln-13"></a>  <span class="k">end type</span>
-<a name="ln-14"></a>
-<a name="ln-15"></a><span class="k">  interface</span>
-<a name="ln-16"></a><span class="k">    module subroutine </span><span class="n">define</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
-<a name="ln-17"></a>      <span class="k">implicit none</span>
-<a name="ln-18"></a><span class="k">      class</span><span class="p">(</span><span class="n">random_samples_t</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">self</span>
-<a name="ln-19"></a>    <span class="k">end subroutine</span>
-<a name="ln-20"></a><span class="k">  end interface</span>
-<a name="ln-21"></a>
-<a name="ln-22"></a><span class="k">end module</span>
-</pre></div>
+    <h2>Variables</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-assertions"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>assertions</strong></td><td> =</td><td>.true.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-max_errmsg_len"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>max_errmsg_len</strong></td><td> =</td><td>len("warning (183): FASTMEM allocation is requested but the libmemkind library is not linked in, so using the default allocator.")</td><td><p>longest Intel compiler error message (see https://intel.ly/35x84yr).</p></td>
+  
+</tr>
+
+</tbody>
+</table>
 
     </section>
+    <br>
+    
+    
+    
+    
+    
+    <section>
+   <h2>Interfaces</h2>
+   
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="interface-assert"></span><h3>interface 
+    
+  </h3></div>
+  
+  <ul class="list-group">
+  
+    <li class="list-group-item">
+    
+    
+    <h3>
+public elemental module subroutine assert(assertion, description, diagnostic_data)
+    
+    
+   
+   <a href='../proc/assert.html'><button type="button" class="btn btn-info depwarn">Implementation &rarr;</button></a>
+    
+</h3>
+    
+
+
+
+<p>If assertion is .false., error-terminate with optional, variable stop code containing diagnostic_data</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>assertion</strong></td><td><p>Most assertions will be expressions, e.g., call assert( i&gt;0, "positive i")</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>description</strong></td><td><p>Brief statement of what is being asserted</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>diagnostic_data</strong></td><td><p>Optional error stop code, which may be of intrinsic type or object class</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+    </li>
+  
+  </ul>
+</div>
+
+    
+    </section>
+  <br>
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
     </div>
   </div>
 
@@ -311,7 +499,7 @@
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-12-07 21:53  
+             on 2020-12-10 18:42  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> miniFAVOR was developed by </p></div>
