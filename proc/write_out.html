@@ -136,7 +136,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 0.4% of total for procedures.">47 statements</a>
+    title=" 0.4% of total for procedures.">50 statements</a>
      </li> 
      
      
@@ -209,7 +209,7 @@
     
     <div class="col-md-9" id='text'>
     <h2>
-public subroutine write_out(fn_in, n_out, n_dat, a, b, nsim, ntime, details, cu_ave, ni_ave, cu_sig, ni_sig, fsurf, rtndt0, cpi_results, k_hist, chemistry)
+public subroutine write_out(fn_in, n_out, n_dat, a, b, nsim, ntime, details, cu_ave, ni_ave, cu_sig, ni_sig, fsurf, rtndt0, r_tndt, cpi, cpi_avg, k_hist, chemistry_content, chemistry_factor)
     
     
    
@@ -448,12 +448,42 @@ public subroutine write_out(fn_in, n_out, n_dat, a, b, nsim, ntime, details, cu_
   
 <tr>
   
-  <td><span class="anchor" id="variable-cpi_results"></span>real,</td>
+  <td><span class="anchor" id="variable-r_tndt"></span>real,</td>
   <td>intent(in)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>cpi_results</strong>(:,:)</td><td></td>
+  <td><strong>r_tndt</strong>(:)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-cpi"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>cpi</strong>(:)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-cpi_avg"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>cpi_avg</strong>(:)</td><td></td>
   
 </tr>
 
@@ -478,12 +508,27 @@ public subroutine write_out(fn_in, n_out, n_dat, a, b, nsim, ntime, details, cu_
   
 <tr>
   
-  <td><span class="anchor" id="variable-chemistry"></span>real,</td>
+  <td><span class="anchor" id="variable-chemistry_content"></span>real,</td>
   <td>intent(in)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>chemistry</strong>(:,:)</td><td></td>
+  <td><strong>chemistry_content</strong>(:,:)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-chemistry_factor"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>chemistry_factor</strong>(:)</td><td></td>
   
 </tr>
 
@@ -556,7 +601,7 @@ public subroutine write_out(fn_in, n_out, n_dat, a, b, nsim, ntime, details, cu_
     <h2><span class="anchor" id="src"></span>Source Code</h2>
     <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">write_OUT</span><span class="p">(</span><span class="n">fn_IN</span><span class="p">,</span> <span class="n">n_OUT</span><span class="p">,</span> <span class="n">n_DAT</span><span class="p">,</span> <span class="p">&amp;</span>
         <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">nsim</span><span class="p">,</span> <span class="n">ntime</span><span class="p">,</span> <span class="n">details</span><span class="p">,</span> <span class="n">Cu_ave</span><span class="p">,</span> <span class="n">Ni_ave</span><span class="p">,</span> <span class="n">Cu_sig</span><span class="p">,</span> <span class="n">Ni_sig</span><span class="p">,</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span><span class="p">,</span> <span class="p">&amp;</span>
-        <span class="n">CPI_results</span><span class="p">,</span> <span class="n">K_hist</span><span class="p">,</span> <span class="n">Chemistry</span><span class="p">)</span>
+        <span class="n">R_Tndt</span><span class="p">,</span> <span class="n">CPI</span><span class="p">,</span> <span class="n">CPI_avg</span><span class="p">,</span> <span class="n">K_hist</span><span class="p">,</span> <span class="n">Chemistry_content</span><span class="p">,</span> <span class="n">Chemistry_factor</span><span class="p">)</span>
 
         <span class="c">!Variables</span>
         <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">64</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fn_IN</span>
@@ -564,7 +609,10 @@ public subroutine write_out(fn_in, n_out, n_dat, a, b, nsim, ntime, details, cu_
         <span class="kt">real</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">Cu_ave</span><span class="p">,</span> <span class="n">Ni_ave</span><span class="p">,</span> <span class="n">Cu_sig</span><span class="p">,</span> <span class="n">Ni_sig</span><span class="p">,</span> <span class="n">fsurf</span><span class="p">,</span> <span class="n">RTndt0</span>
         <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">nsim</span><span class="p">,</span> <span class="n">ntime</span>
         <span class="kt">logical</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">details</span>
-        <span class="kt">real</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">CPI_results</span><span class="p">(:,:),</span> <span class="n">K_hist</span><span class="p">(:),</span> <span class="n">Chemistry</span><span class="p">(:,:)</span>
+        <span class="kt">real</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">K_hist</span><span class="p">(:),</span> <span class="n">Chemistry_content</span><span class="p">(:,:),</span> <span class="n">Chemistry_factor</span><span class="p">(:)</span>
+        <span class="kt">real</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">R_Tndt</span><span class="p">(:)</span>
+        <span class="kt">real</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">CPI</span><span class="p">(:)</span>
+        <span class="kt">real</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">CPI_avg</span><span class="p">(:)</span>
 
         <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fn_OUT</span><span class="p">,</span> <span class="n">fn_DAT</span>
         <span class="kt">integer</span> <span class="kd">::</span> <span class="n">i</span>
@@ -586,13 +634,13 @@ public subroutine write_out(fn_in, n_out, n_dat, a, b, nsim, ntime, details, cu_
         <span class="k">write</span> <span class="p">(</span><span class="n">n_OUT</span><span class="p">,</span> <span class="s1">&#39;(a25,f10.3,a)&#39;</span><span class="p">)</span> <span class="s1">&#39;ID Surface Fluence: &#39;</span><span class="p">,</span> <span class="n">fsurf</span><span class="p">,</span> <span class="s1">&#39; n/cm^2&#39;</span>
         <span class="k">write</span> <span class="p">(</span><span class="n">n_OUT</span><span class="p">,</span> <span class="s1">&#39;(a25,f10.3,a)&#39;</span><span class="p">)</span> <span class="s1">&#39;Unirradiated RTndt: &#39;</span><span class="p">,</span> <span class="n">RTndt0</span><span class="p">,</span> <span class="s1">&#39; degF&#39;</span>
         <span class="k">write</span> <span class="p">(</span><span class="n">n_OUT</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="s1">&#39;/Results/&#39;</span>
-        <span class="k">write</span> <span class="p">(</span><span class="n">n_OUT</span><span class="p">,</span> <span class="s1">&#39;(a25,f10.3)&#39;</span><span class="p">)</span> <span class="s1">&#39;Final CPI: &#39;</span><span class="p">,</span> <span class="n">CPI_results</span><span class="p">(</span><span class="n">nsim</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+        <span class="k">write</span> <span class="p">(</span><span class="n">n_OUT</span><span class="p">,</span> <span class="s1">&#39;(a25,f10.3)&#39;</span><span class="p">)</span> <span class="s1">&#39;Final CPI: &#39;</span><span class="p">,</span> <span class="n">CPI_avg</span><span class="p">(</span><span class="n">nsim</span><span class="p">)</span>
         <span class="k">write</span> <span class="p">(</span><span class="n">n_OUT</span><span class="p">,</span> <span class="s1">&#39;(a25,f10.3,a)&#39;</span><span class="p">)</span> <span class="s1">&#39;Minimum crack tip RTndt: &#39;</span><span class="p">,</span> <span class="p">&amp;</span>
-            <span class="nb">minval</span><span class="p">(</span><span class="n">CPI_results</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)),</span> <span class="s1">&#39; degF&#39;</span>
+            <span class="nb">minval</span><span class="p">(</span><span class="n">R_Tndt</span><span class="p">),</span> <span class="s1">&#39; degF&#39;</span>
         <span class="k">write</span> <span class="p">(</span><span class="n">n_OUT</span><span class="p">,</span> <span class="s1">&#39;(a25,f10.3,a)&#39;</span><span class="p">)</span> <span class="s1">&#39;Maximum crack tip  RTndt: &#39;</span><span class="p">,</span> <span class="p">&amp;</span>
-            <span class="nb">maxval</span><span class="p">(</span><span class="n">CPI_results</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)),</span> <span class="s1">&#39; degF&#39;</span>
+            <span class="nb">maxval</span><span class="p">(</span><span class="n">R_Tndt</span><span class="p">),</span> <span class="s1">&#39; degF&#39;</span>
         <span class="k">write</span> <span class="p">(</span><span class="n">n_OUT</span><span class="p">,</span> <span class="s1">&#39;(a25,f10.3,a)&#39;</span><span class="p">)</span> <span class="s1">&#39;Average crack tip RTndt: &#39;</span><span class="p">,</span> <span class="p">&amp;</span>
-            <span class="nb">sum</span><span class="p">(</span><span class="n">CPI_results</span><span class="p">(:,</span><span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="n">nsim</span><span class="p">,</span> <span class="s1">&#39; degF&#39;</span>
+            <span class="nb">sum</span><span class="p">(</span><span class="n">R_Tndt</span><span class="p">)</span><span class="o">/</span><span class="n">nsim</span><span class="p">,</span> <span class="s1">&#39; degF&#39;</span>
 
         <span class="c">!Write out detailed output to data file</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">details</span><span class="p">)</span> <span class="k">then</span>
@@ -606,12 +654,12 @@ public subroutine write_out(fn_in, n_out, n_dat, a, b, nsim, ntime, details, cu_
             <span class="k">write</span> <span class="p">(</span><span class="n">n_DAT</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="s1">&#39;/Chemistry Results&#39;</span>
             <span class="k">write</span> <span class="p">(</span><span class="n">n_DAT</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="s1">&#39;Cu content (%),  Ni Content (%), Chemistry Factor CF&#39;</span>
             <span class="n">write_chem</span><span class="p">:</span> <span class="k">do  </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nsim</span>
-                <span class="k">write</span> <span class="p">(</span><span class="n">n_DAT</span><span class="p">,</span> <span class="s1">&#39;(3f10.3)&#39;</span><span class="p">)</span> <span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">Chemistry</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+                <span class="k">write</span> <span class="p">(</span><span class="n">n_DAT</span><span class="p">,</span> <span class="s1">&#39;(3f10.3)&#39;</span><span class="p">)</span> <span class="n">Chemistry_content</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">Chemistry_content</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">Chemistry_factor</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
             <span class="k">end do </span><span class="n">write_chem</span>
             <span class="k">write</span> <span class="p">(</span><span class="n">n_DAT</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="s1">&#39;/Vessel CPI data&#39;</span>
             <span class="k">write</span> <span class="p">(</span><span class="n">n_DAT</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="s1">&#39;Vessel RTndt (degF),  Vessel CPI, Cumulative Average CPI&#39;</span>
             <span class="n">write_CPI</span><span class="p">:</span> <span class="k">do  </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nsim</span>
-                <span class="k">write</span> <span class="p">(</span><span class="n">n_DAT</span><span class="p">,</span> <span class="s1">&#39;(3f10.3)&#39;</span><span class="p">)</span> <span class="n">CPI_results</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">CPI_results</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">CPI_results</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+                <span class="k">write</span> <span class="p">(</span><span class="n">n_DAT</span><span class="p">,</span> <span class="s1">&#39;(3f10.3)&#39;</span><span class="p">)</span> <span class="n">R_Tndt</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">CPI</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">CPI_avg</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
             <span class="k">end do </span><span class="n">write_CPI</span>
         <span class="k">end if</span>
 
@@ -638,7 +686,7 @@ public subroutine write_out(fn_in, n_out, n_dat, a, b, nsim, ntime, details, cu_
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-12-10 18:42  
+             on 2020-12-11 20:27  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> miniFAVOR was developed by </p></div>
